@@ -9,7 +9,7 @@ function clean()
 function lutro()
 {
   echo zipping to lutro
-  zip -r build/spacetrucks001.lutro conf.lua main.lua space_menu.lua space.lua gfx sfx
+  zip -r build/spacetrucks_$(openssl rand -hex 2).lutro conf.lua main.lua space_menu.lua space.lua gfx sfx
 }
 
 function run()

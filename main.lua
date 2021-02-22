@@ -31,18 +31,20 @@ use_music = true
 
 function love.load()
 	math.randomseed(os.time())
+  print(load)
   love.graphics.setBackgroundColor(bgcolor)
 
 	--loadHighscore()
 	loadResources()
 	love.graphics.setFont(imgfont)
-
+  loadSpace()
 	--pl = Player.create()
 	updateScale()
 	restart()
 end
 
 function restart()
+  print("RESTART")
   --TODO
 	--pl:reset()
 	--clouds = {}
@@ -69,6 +71,7 @@ function restart()
 end
 
 function love.update(dt)
+  updateSpace(dt)
 	if gamestate == 0 then
 		updateGame(dt)
 	elseif gamestate == 1 then
@@ -82,7 +85,7 @@ function updateGame(dt)
 	end
   --TODO
 	-- Update terrain (skyscrapers etc.)
-	updateSpace(dt)
+	-- updateSpace(dt)
 end
 
 
@@ -163,11 +166,12 @@ function loadResources()
 	imgSpace = love.graphics.newImage("gfx/space_backdrop.png")
 	imgSpace:setFilter("nearest","nearest")
 
-	imgStar = love.graphics.newImage("gfx/star.png")
-	imgStar:setFilter("nearest","nearest")
-
 	imgSplash = love.graphics.newImage("gfx/splash.png")
 	imgSplash:setFilter("nearest","nearest")
+
+  imgStar = love.graphics.newImage("gfx/star.png")
+  imgStar:setFilter("nearest","nearest")
+
 
 	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789.!'-:*")
 

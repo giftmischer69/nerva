@@ -1,7 +1,7 @@
 function love.conf(t)
     t.identity = "strux"
     t.version = "0.0.1"
-    t.console = false
+    t.console = true
 
     t.window.title = "SpacetruckS"
     t.window.icon = nil
