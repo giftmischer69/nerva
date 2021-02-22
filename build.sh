@@ -27,7 +27,7 @@ build() {
     else
         clean
         lutro
-        run
+        # run
     fi
 }
 

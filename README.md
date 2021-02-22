@@ -1,5 +1,10 @@
 # spacetrucks
 
+the goal of this project is to create a "truck simulator meets a visual novel somewhere in a cyberpunk dystopia in space" developed with [libretro-lutro](https://github.com/libretro/libretro-lutro)
+for the [raspberry pi zero w with the retroflag gpi case](http://retroflag.com/GPi-CASE.html)
+running [recalbox](https://www.recalbox.com/de/)
+
+
 ## vision
 
 spacetrucks will be a story and text based game, in which you play as a truck
@@ -57,6 +62,22 @@ interviews/dialogues -> radio-like transmissions with fellow truckers
 - https://www.google.com/search?q=space+pixel+art&sxsrf=ALeKk01eAbnsWAmPSgEHhc8O60_wTUOGew:1613870643154&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjU6JfT6PnuAhVB6aQKHbbVDC0Q_AUoAXoECBEQAw&biw=792&bih=739
 
 ## technical realization
-developed in [libretro-lutro](https://github.com/libretro/libretro-lutro)
+developed with [libretro-lutro](https://github.com/libretro/libretro-lutro)
 for the [raspberry pi zero w with the retroflag gpi case](http://retroflag.com/GPi-CASE.html)
 running [recalbox](https://www.recalbox.com/de/)
+
+## lore ideas
+
+- at the start: the player has debts
+- earn money through deliveries (smuggling / weapons transprotection)
+- avoid the space police
+
+- story gets cut in to missions (maybe even a "relatively" open world with choose your own path, depending on which missions you take)
+
+### in flight encounters
+
+- in one or some trips the player gets a choice to pick up a hitchhiker -> the hitchhiker sits and talks to the player -> from there on out everything can happen (good/bad/etc)
+
+- in one or some trips the player gets pulled over by police or gangsters, the player then needs to handle the situation per dialogue   
+
+- the engine could break down -> maybe repair it or call a repair service or sth -> maybe the hitchhiker can fix it and the player saves money if he chose to pick up the hitchhiker
