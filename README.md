@@ -74,6 +74,16 @@ running [recalbox](https://www.recalbox.com/de/)
 
 - story gets cut in to missions (maybe even a "relatively" open world with choose your own path, depending on which missions you take)
 
+
+- choice to smuggle or deliver normal packages
+  - smuggling: more money, higher risk (police)
+  - normal: less monay, less risk
+
+- reputation system
+  - if bad reputation with police -> more fines / punishment
+  - if bad reputation with gangsters -> more ripoffs / attacks / punishment
+  - vice versa
+
 ### in flight encounters
 
 - in one or some trips the player gets a choice to pick up a hitchhiker -> the hitchhiker sits and talks to the player -> from there on out everything can happen (good/bad/etc)

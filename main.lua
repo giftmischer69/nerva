@@ -163,6 +163,9 @@ function loadResources()
 	imgSpace = love.graphics.newImage("gfx/space_backdrop.png")
 	imgSpace:setFilter("nearest","nearest")
 
+	imgStar = love.graphics.newImage("gfx/star.png")
+	imgStar:setFilter("nearest","nearest")
+
 	imgSplash = love.graphics.newImage("gfx/splash.png")
 	imgSplash:setFilter("nearest","nearest")
 
