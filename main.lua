@@ -12,7 +12,7 @@ function love.conf(t)
 	t.height = HEIGHT
 end
 
-bgcolor = {34,35,42,255}
+bgcolor = {0,10,20,255}
 darkcolor = {217,220,242,255}
 
 --[[

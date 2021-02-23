@@ -113,7 +113,13 @@ class ParticleSystem:
             ):
                 self.particles.remove(particle)
                 speed_x, speed_y = self.get_random_speed(self.speed)
-                p = Particle(self.center[0], self.center[1], speed_x, speed_y, 1)
+                p = Particle(
+                    self.center[0],  #  + random.randint(-50, 50),
+                    self.center[1],  #  + random.randint(-50, 50),
+                    speed_x,
+                    speed_y,
+                    1,
+                )
                 self.particles.append(p)
 
             particle.x += particle.s_x
@@ -121,6 +127,9 @@ class ParticleSystem:
 
 
 class Game:
+    # g = Game()
+    # print(g.running)
+    # True
     def __init__(self):
         pygame.init()
         width = 500
@@ -137,7 +146,7 @@ class Game:
             y=0,
             width=width,
             height=height,
-            num=width + height,
+            num=(width + height) // 4,
             speed=0.2,
             time_alive=30,
         )

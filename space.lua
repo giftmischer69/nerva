@@ -2,20 +2,25 @@ psys_x = 0
 psys_y = 0
 psys_width = 320
 psys_height = 240
-psys_num = 1000 --100 --The max number of particles at the same time.
-particles = {}
+psys_num = 1000 --The max number of particles at the same time.
+psys_speed = 50
+psys_time_alive = 100
 
-psys_speed = 20
+particles = {}
 
 psys_center_x = psys_x + (psys_width / 2)
 psys_center_y = psys_y + (psys_height / 2)
 
+psys_fade_in_sec = 2
 --back_space = love.graphics.newQuad(0,0,320,240,512,512)
 
 --front_space = love.graphics.newQuad(0,224,300,94,512,512)
 --track_space = love.graphics.newQuad(0,48,121,5,128,128)
 
-
+function getTimeStamp()
+  --return os.time(os.date("!*t"))
+  return love.timer.getTime()
+end
 
 function getRandomFloatMinusOneToOne()
   temp_num = math.random() + math.random(1, 99)
@@ -26,21 +31,36 @@ end
 function loadSpace()
 
   for i=1,psys_num do
-    p_sp_x = getRandomFloatMinusOneToOne()--math.random(-1,1)
-    p_sp_y = getRandomFloatMinusOneToOne()--math.random(-1,1)
-    -- a particle is a table {x position, y position, x speed, y speed}
-    -- maybe add scale or sth
-    particle = {psys_center_x, psys_center_y, p_sp_x, p_sp_y}
+    p_sp_x = getRandomFloatMinusOneToOne() * psys_speed
+    p_sp_y = getRandomFloatMinusOneToOne() * psys_speed
+    -- a particle is a table {x position, y position, x speed, y speed, created_time}
+    particle = {psys_center_x, psys_center_y, p_sp_x, p_sp_y, getTimeStamp()}
     table.insert(particles, particle)
   end
 end
 
 function updateSpace(dt)
+  --print(os.time(os.date("!*t")))
   --print("UPDATE SPACE")
   for index, value in ipairs(particles) do
     --print(index, ". ", value)
-    value[1] = (value[1] + (value[3] * dt * psys_speed)) % psys_width
-    value[2] = (value[2] + (value[4] * dt * psys_speed)) % psys_height
+    if (getTimeStamp() - value[5]) > psys_time_alive
+      or value[1] < psys_x
+      or value[1] > psys_width
+      or value[2] < psys_y
+      or value[2] > psys_height
+    then
+      --table.remove(particles, index)
+      -- a particle is a table {x position, y position, x speed, y speed, created_time}
+      value[1] = psys_center_x
+      value[2] = psys_center_y
+      value[3] = getRandomFloatMinusOneToOne() * psys_speed
+      value[4] = getRandomFloatMinusOneToOne() * psys_speed
+      value[5] = getTimeStamp()
+    end
+
+    value[1] = (value[1] + (value[3] * dt)) -- % psys_width
+    value[2] = (value[2] + (value[4] * dt)) -- % psys_height
   end
 end
 
@@ -51,8 +71,21 @@ function drawSpace()
       --print("- ",i, v)
     end
     --print(index, ". ", value[0], value[1], value[2], value[3])
-    --love.graphics.circle("fill", value[1],value[2],1,5)   -- Draw red circle with five segments.
-    love.graphics.point(value[1],value[2])
+    diff = getTimeStamp() - value[5]
+    --print(diff)
+    --love.graphics.setColor(1, 1, 1)
+    --love.graphics.circle("fill", value[1],value[2],1)
+
+    if diff < psys_fade_in_sec then
+      col = (diff / psys_fade_in_sec) * 255
+      love.graphics.setColor(1, 1, 1)
+      love.graphics.circle("fill", value[1],value[2],1)   -- Draw red circle with five segments.
+    else
+      love.graphics.setColor(255, 255, 255)
+      love.graphics.circle("fill", value[1],value[2],1)
+    end
+
+    --love.graphics.point(value[1],value[2])
     --p_quad = love.graphics.newQuad(value[1],value[2],9,9,9,9)
     --love.graphics.draw(imgStar,p_quad,value[1],value[2])
   end
