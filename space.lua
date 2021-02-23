@@ -15,12 +15,7 @@ psys_center_y = psys_y + (psys_height / 2)
 --front_space = love.graphics.newQuad(0,224,300,94,512,512)
 --track_space = love.graphics.newQuad(0,48,121,5,128,128)
 
--- ein particle ist ein table
--- - x position
--- - y position
--- - speed x
--- - speed y
--- (optional) - scale
+
 
 function getRandomFloatMinusOneToOne()
   temp_num = math.random() + math.random(1, 99)
@@ -33,7 +28,8 @@ function loadSpace()
   for i=1,psys_num do
     p_sp_x = getRandomFloatMinusOneToOne()--math.random(-1,1)
     p_sp_y = getRandomFloatMinusOneToOne()--math.random(-1,1)
-
+    -- a particle is a table {x position, y position, x speed, y speed}
+    -- maybe add scale or sth
     particle = {psys_center_x, psys_center_y, p_sp_x, p_sp_y}
     table.insert(particles, particle)
   end
