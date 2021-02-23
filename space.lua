@@ -2,9 +2,9 @@ psys_x = 0
 psys_y = 0
 psys_width = 320
 psys_height = 240
-psys_num = 1000 --The max number of particles at the same time.
-psys_speed = 50
-psys_time_alive = 100
+psys_num = 250 --The max number of particles at the same time.
+psys_speed = 40
+psys_time_alive = 10
 
 particles = {}
 
@@ -12,13 +12,15 @@ psys_center_x = psys_x + (psys_width / 2)
 psys_center_y = psys_y + (psys_height / 2)
 
 psys_fade_in_sec = 2
---back_space = love.graphics.newQuad(0,0,320,240,512,512)
+
+psys_particle_color_val = 155
+
+back_space = love.graphics.newQuad(0,0,320,240,512,512)
 
 --front_space = love.graphics.newQuad(0,224,300,94,512,512)
 --track_space = love.graphics.newQuad(0,48,121,5,128,128)
 
 function getTimeStamp()
-  --return os.time(os.date("!*t"))
   return love.timer.getTime()
 end
 
@@ -65,25 +67,19 @@ function updateSpace(dt)
 end
 
 function drawSpace()
+  love.graphics.draw(imgSpace, back_space, 0,0)
   for index, value in ipairs(particles) do
-    --print(index, ". ", value)
-    for i, v in ipairs(value) do
-      --print("- ",i, v)
-    end
-    --print(index, ". ", value[0], value[1], value[2], value[3])
     diff = getTimeStamp() - value[5]
-    --print(diff)
-    --love.graphics.setColor(1, 1, 1)
-    --love.graphics.circle("fill", value[1],value[2],1)
 
     if diff < psys_fade_in_sec then
-      col = (diff / psys_fade_in_sec) * 255
-      love.graphics.setColor(1, 1, 1)
-      love.graphics.circle("fill", value[1],value[2],1)   -- Draw red circle with five segments.
+      col = (diff / psys_fade_in_sec) * psys_particle_color_val
+      love.graphics.setColor(col, col, col)
+      love.graphics.circle("fill", value[1],value[2],1)
     else
-      love.graphics.setColor(255, 255, 255)
+      love.graphics.setColor(psys_particle_color_val, psys_particle_color_val, psys_particle_color_val)
       love.graphics.circle("fill", value[1],value[2],1)
     end
+
 
     --love.graphics.point(value[1],value[2])
     --p_quad = love.graphics.newQuad(value[1],value[2],9,9,9,9)
