@@ -12,7 +12,7 @@ function love.conf(t)
 	t.height = HEIGHT
 end
 
-bgcolor = {0,0,0,255}
+bgcolor = {34,35,42,255}
 darkcolor = {217,220,242,255}
 
 --[[
@@ -179,12 +179,12 @@ function loadResources()
 	--auCoffee = love.audio.newSource("sfx/coffee.wav","stream")
 	--auHit = love.audio.newSource("sfx/hit.wav","stream")
 	--auSelect = love.audio.newSource("sfx/select.wav","stream")
-	--if use_music == true then
-		--auBGM = love.audio.newSource("sfx/bgm.ogg","stream")
-		--auBGM:setLooping(true)
-		--auBGM:setVolume(0.6)
-		--auBGM:play()
-	--end
+	if use_music == true then
+		auBGM = love.audio.newSource("sfx/bgm_jazz.ogg","stream")
+		auBGM:setLooping(true)
+		auBGM:setVolume(0.6)
+		auBGM:play()
+	end
 end
 
 
