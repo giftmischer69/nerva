@@ -8,7 +8,7 @@ function drawMenu()
 	drawSpace()
 	love.graphics.printf("TEST",0,42,WIDTH,"center")
 	if submenu == 0 then
-		love.graphics.draw(imgSplash,60,30) -- 60 30
+		love.graphics.draw(imgSplash,0,0) -- 60 30
 	elseif submenu == 1 then
 	elseif submenu == 2 then
 		love.graphics.printf("select action",0,22,WIDTH,"center")

@@ -26,7 +26,28 @@ a truck has
 ## the universe
 
 
+### SIN
+Spacial Intelligence Network
 
+- BND / Secret Service / federal intelligence service of the inter-galactic government
+
+- SINN: Spacial Intelligence Network News
+  - newsticker in spaceship, displays information on current events like
+    - police raids in specific parts of the galaxy
+    - no-go areas in the galaxy, controlled by bandits / gangs
+
+
+### Gangs
+
+- Kiefer Kampf Kommando
+  - nazis oder so (die bösen)
+
+
+- The Woldt Colony in low-earth orbit
+
+### places
+
+- The Kaima Industrial Complex in geosynchronous orbit
 
 
 
