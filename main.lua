@@ -3,6 +3,11 @@ love = lutro
 require("space_menu")
 require("space")
 
+--TODO Core Features:
+-- - minimap
+-- - lazer road
+-- - asteroids
+
 WIDTH = 320
 HEIGHT = 240
 SCALE = 1
@@ -12,8 +17,8 @@ function love.conf(t)
 	t.height = HEIGHT
 end
 
-bgcolor = {34,35,42,255}
-darkcolor = {217,220,242,255}
+bgcolor = {0, 1, 1,255}
+darkcolor = {240, 246, 240,255}
 
 --[[
   Gamestates:
@@ -27,7 +32,7 @@ gamestate = 1
 selection = 0
 submenu = 0
 
-use_music = true
+use_music = false
 
 function love.load()
 	math.randomseed(os.time())
@@ -169,9 +174,8 @@ function loadResources()
 	imgSplash = love.graphics.newImage("gfx/splash.png")
 	imgSplash:setFilter("nearest","nearest")
 
-  imgStar = love.graphics.newImage("gfx/star.png")
-  imgStar:setFilter("nearest","nearest")
-
+	imgShipHud = love.graphics.newImage("gfx/driving_hud.png")
+  imgShipHud:setFilter("nearest","nearest")
 
 	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789.!'-:*")
 

@@ -17,6 +17,7 @@ psys_particle_color_val = 155
 
 back_space = love.graphics.newQuad(0,0,320,240,512,512)
 
+space_ship_hud = love.graphics.newQuad(0,0,320,240,320,240)
 --front_space = love.graphics.newQuad(0,224,300,94,512,512)
 --track_space = love.graphics.newQuad(0,48,121,5,128,128)
 
@@ -68,6 +69,7 @@ end
 
 function drawSpace()
   love.graphics.draw(imgSpace, back_space, 0,0)
+
   for index, value in ipairs(particles) do
     diff = getTimeStamp() - value[5]
 
@@ -80,6 +82,7 @@ function drawSpace()
       love.graphics.circle("fill", value[1],value[2],1)
     end
 
+    love.graphics.draw(imgShipHud, space_ship_hud, 0, 0)
 
     --love.graphics.point(value[1],value[2])
     --p_quad = love.graphics.newQuad(value[1],value[2],9,9,9,9)
