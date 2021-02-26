@@ -45,9 +45,19 @@ Spacial Intelligence Network
 
 - The Woldt Colony in low-earth orbit
 
+- Cyber SaintS
+  - Netrunner: Everglade
+  - Netrunner: FakeID
+  - Netrunner: DeadLock
+
 ### places
 
 - The Kaima Industrial Complex in geosynchronous orbit
+  - part of the corporation Kaima Corporation
+  - so big, unmanageble
+    - has become its own local ecosystem with many people working and living there (office / factory space)
+    - home of the cyber saints
+    - they live undercover somewhere in this maze of an industrial complex
 
 
 
