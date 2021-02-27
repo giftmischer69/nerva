@@ -90,10 +90,10 @@ function love.update(dt)
 
 		--dev splash
 	elseif gamestate == 2 then
-    --if auBGM:isPlaying() then
-      --auBGM:stop()
-    --end
-    --dev splash
+    if auBGM:isPlaying() then
+      auBGM:stop()
+    end
+    -- TODO Dialog mission 1
 	else
     --body
 	end
@@ -116,9 +116,14 @@ function love.gamepadpressed(i, key)
     elseif key == 'down' then
       selection = selection + 1
     elseif key == 'start' then
-      
-      submenu = 1
-      love.audio.play(auSelect)
+			love.audio.play(auSelect)
+			if submenu == 0 then
+      	submenu = 1
+			elseif submenu == 1 then
+				submenu = 0
+				gamestate = 2
+			end
+
     end
     return
   elseif gamestate == 2 then
@@ -132,7 +137,7 @@ end
 
 function loadSavegames()
   local filename = "sg.txt"
-  local fh = io.open(filename, "r")
+	local fh = io.open(filename, "r")
   if fh then
     --> File Found
   else
@@ -148,10 +153,13 @@ function loadSavegames()
   local t = f:read("*all")
   t = (loadstring or load)("return "..t)()
   save_names = t
+	print(t)
   f:close()
 end
 
 function loadAudio()
+--TODO blip & talking blip baba
+
   au_intro = love.audio.newSource("sfx/intro.ogg","stream")
   au_intro:setVolume(0.6)
 
