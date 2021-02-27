@@ -1,5 +1,3 @@
-
-
 function loadSplash()
   img_splash = love.graphics.newImage("gfx/splash.png")
 	img_splash:setFilter("nearest","nearest")
@@ -9,7 +7,6 @@ end
 
 function drawSplash()
   love.graphics.draw(img_splash, splash_quad, 0,0)
-  --TODO replace press
 
   love.graphics.printf("press start",0,210,WIDTH,"center")
 end

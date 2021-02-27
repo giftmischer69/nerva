@@ -4,24 +4,28 @@ require("intro")
 require("menu")
 require("space")
 require("splash")
+require("mission01")
 
 WIDTH = 320
 HEIGHT = 240
 SCALE = 1
 
 pause = false
-mute = false
+mute = true
 gamestate = 0
 selection = 0
 submenu = 0
 
 use_music = true
 
-splash_duration = 300
+splash_duration = 3--00
 
 save_names = nil
 
 au_level = 0.01
+
+dialog_line_no = 1
+dialog_char_no = 1
 
 function love.conf(t)
 	t.width = WIDTH
@@ -34,14 +38,18 @@ function love.load()
 
   loadSavegames()
 
+	--TODO ADD Special Characters, uppercase (different font, 9px)
 	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789.!'-:*")
 	love.graphics.setFont(imgfont)
+
+	--TODO version file for bash build naming
 
   loadAudio()
 
 	loadIntro()
   loadSpace()
   loadSplash()
+	loadMission01()
 
   au_intro:play()
 
@@ -65,9 +73,10 @@ function love.draw()
     drawSpace()
     drawMenu()
   elseif gamestate == 2 then
-    --dev splash
+		drawMission01()
+		--dev splash
   end
-  love.graphics.printf("gs:" .. gamestate .. " sm:".. submenu,0,0,WIDTH,"right")
+  love.graphics.printf("dl:" .. dialog_line_no .. " gs:" .. gamestate .. " sm:".. submenu,0,0,WIDTH,"right")
 end
 
 function love.update(dt)
@@ -93,6 +102,7 @@ function love.update(dt)
     if auBGM:isPlaying() then
       auBGM:stop()
     end
+		updateMission01(dt)
     -- TODO Dialog mission 1
 	else
     --body
@@ -123,11 +133,18 @@ function love.gamepadpressed(i, key)
 				submenu = 0
 				gamestate = 2
 			end
-
     end
     return
   elseif gamestate == 2 then
-    return
+		if key == "a" or key == "start" then
+			print("dln:"..dialog_line_no.." dll:"..table.getn(dialog_lines))
+			if dialog_line_no ~= table.getn(dialog_lines) then
+				print("update dlln")
+				dialog_line_no = dialog_line_no + 1
+				dialog_char_no = 1
+			end
+		end
+
   end
 end
 
