@@ -6,6 +6,10 @@ running [recalbox](https://www.recalbox.com/de/)
 
 https://www.google.com/search?q=spaceship%20cockpit&tbm=isch&hl=de&tbs=ic:trans&sa=X&ved=0CAEQpwVqFwoTCOCQhZSthu8CFQAAAAAdAAAAABAC&biw=1577&bih=788#imgrc=wrtl8XsMQ-SeoM
 
+echo usage: encode.cmd input.mp3 output.ogg
+sox %1 -r 44100 -c 1 %2
+
+
 ## vision
 
 spacetrucks will be a story and text based game, in which you play as a truck
