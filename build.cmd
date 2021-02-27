@@ -15,12 +15,11 @@ exit
 :(){
 rem Windows script here
 echo %OS%
-
 cd build
 RD . /S /Q
 cd ..
 echo cleaning build dir
 7z a -r build/spacetrucks.zip conf.lua main.lua intro.lua menu.lua space.lua splash.lua gfx sfx
-copy build\spacetrucks.zip build\spacetrucks.lutro
 echo zipping to lutro
-exit
+copy build\spacetrucks.zip build\spacetrucks.lutro
+goto :eof
