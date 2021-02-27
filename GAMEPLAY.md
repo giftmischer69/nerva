@@ -1,4 +1,36 @@
+## start
+- developer studio screen (intro)
+- the data has been loaded
+- display savegame slots: 3
+  - 1: New Data
+  - 2: [player name]
 
+- cutscene 1: @ home-base neo earth
+  - ???: ...Hello?
+  - Chloe: hey wake up! your last job under my supervision is coming up, and you oversleep! you do know that if everything goes smoothly here, you'll get your official cargo license, right?
+  - ???: yeah... i know...
+  - Chloe: well, do you already know what your cargo alias should be for your license?
+  - ???: [Enter Name]
+  - [Name]: My nick will be: [name]...
+
+- cutscene 2: @ chloe's truck
+  - Chloe: we got a pretty simple job on our hands today. we need to deliver 51 metric tons of Foodstuffs to a Nearby solar System, we'll make 300 credits doing it.
+  - [Name]: Sounds great! When do we start?
+  - Chloe: right now! and since this is the last officially required trip for your OCL, it may also be our last trip together.... You're driving!
+
+- driving 1: @ chloe's truck
+
+-> when almost there
+
+- cutscene 3: @ chloe's truck
+  - Chloe: WATCH OUT!
+  - BANG BOOM BLACK SCREEN (Big Crash)
+
+- another title screen, now the game starts
+
+
+
+Chloe "Daytona" Wynn: Female Driver. Chloe has short violet hair and red eyes. She wears cargo pants and a Priss and the Replicants t-shirt, and carries tungsten shuriken. Chloe avoids physical contact.
 
 ## missions
 
