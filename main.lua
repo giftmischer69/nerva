@@ -45,7 +45,7 @@ function love.load()
 	love.graphics.setFont(imgfont)
 
 	--TODO version file for bash build naming
-
+	--TODO dist folder with incremental builds
   loadAudio()
 
 	loadIntro()
