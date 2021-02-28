@@ -2,6 +2,8 @@ echo off
 
 goto(){
 # Linux code here
+# TODO: from where did i get this?
+# TODO: for both: version file with version="0.0.1" etc... maybe per build +1 etc
 uname -o
 echo cleaning build dir
 rm -f -r build/*
