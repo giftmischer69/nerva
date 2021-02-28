@@ -1,7 +1,3 @@
---load
---update
---draw
-
 function loadMission01()
   img_mechanic_portrait = love.graphics.newImage("gfx/mechanic_portrait.png")
 	img_mechanic_portrait:setFilter("nearest","nearest")
@@ -64,8 +60,11 @@ function drawMission01()
   --print("loc:"..loc.." chrc:"..chrc.." l_str:"..l_str)
   love.graphics.printf("location:"..loc,0,0,WIDTH,"left")
 
-  love.graphics.printf(chrc,0,167,WIDTH,"center")
+  love.graphics.printf(chrc,0,160,WIDTH,"center")
 
   love.graphics.printf(l_str:sub(1,dialog_char_no), 40, 185, WIDTH - 80, "left")
   dialog_char_no = dialog_char_no + 1
+  if dialog_char_no % 2 == 0 then
+    --TODO add animal crossing blip
+  end
 end
