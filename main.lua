@@ -38,12 +38,14 @@ function love.load()
 
   loadSavegames()
 
-	--TODO ADD Special Characters, uppercase (different font, 9px)
-	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789.!'-:*")
+	--TODO add gothic and symbol font
+	-- - https://www.dafont.com/de/pixel-icons-compilation.font?text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&fpp=200&sort=date&l[]=10&l[]=1&back=bitmap
+  -- - https://www.dafont.com/de/owrekynge.font?text=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%24%A2%80%A3%A5-%2A%2F%3D%25%27%23%40%26_%28%29%2C.%3B%3A%3F%21%7C%7B%7D%3C%3E%5B%5D%A7%5E%7E&fpp=200&sort=date&l[]=10&l[]=1&back=bitmap
+	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789$-*/=%'#@&_(),.;:?!|{}<>[]^~")
 	love.graphics.setFont(imgfont)
 
 	--TODO version file for bash build naming
-
+	--TODO dist folder with incremental builds
   loadAudio()
 
 	loadIntro()
@@ -65,6 +67,7 @@ end
 
 
 function love.draw()
+	--NOTE MAYBE BITONALIZE EVERYTHIN (only 2 colors: b/w no grey) with a pallette: https://lospec.com/palette-list/1bit-monitor-glow
 	love.graphics.clear()
 	love.graphics.scale(SCALE,SCALE)
   if gamestate == 0 then
@@ -74,9 +77,9 @@ function love.draw()
     drawMenu()
   elseif gamestate == 2 then
 		drawMission01()
-		--dev splash
   end
   love.graphics.printf("dl:" .. dialog_line_no .. " gs:" .. gamestate .. " sm:".. submenu,0,0,WIDTH,"right")
+
 end
 
 function love.update(dt)
@@ -103,7 +106,8 @@ function love.update(dt)
       auBGM:stop()
     end
 		updateMission01(dt)
-    -- TODO Dialog mission 1
+    -- TODO mock tutorial driving mission 1
+		-- TODO driving mission 1
 	else
     --body
 	end
@@ -175,7 +179,7 @@ function loadSavegames()
 end
 
 function loadAudio()
---TODO blip & talking blip baba
+	--TODO blip & talking blip baba
 
   au_intro = love.audio.newSource("sfx/intro.ogg","stream")
   au_intro:setVolume(0.6)
@@ -188,4 +192,15 @@ function loadAudio()
     auBGM:setLooping(true)
     auBGM:setVolume(au_level)
   end
+end
+
+function draw_debug_fonts()
+	local str01 = " aabbccddeeffgghhiijjkkllmmnnooppqrstuvwxyz"
+	local str02 = "0123456789"
+	local str03 = "$-*/=%'#@&_()"
+	local str04 = ",.;:?!|{}<>[]^~"
+	love.graphics.printf(str01, 0, 20, WIDTH, "left")
+	love.graphics.printf(str02, 0, 30, WIDTH, "left")
+	love.graphics.printf(str03, 0, 40, WIDTH, "left")
+	love.graphics.printf(str04, 0, 50, WIDTH, "left")
 end

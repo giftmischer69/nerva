@@ -6,6 +6,8 @@ psys_num = 600 --The max number of particles at the same time.
 psys_speed = 30
 psys_time_alive = 20
 
+--TODO USE DIFFERENT SPRITES FOR DIFFERENT STARS AND GALAXIES, SAVE IN PARTICLE 
+
 particles = {}
 
 psys_center_x = psys_x + (psys_width / 2)
@@ -15,7 +17,7 @@ psys_fade_in_sec = 2
 
 psys_particle_color_val = 200--155
 
-back_space = love.graphics.newQuad(0,0,320,240,512,512) 
+back_space = love.graphics.newQuad(0,0,320,240,512,512)
 
 space_ship_hud = love.graphics.newQuad(0,0,320,240,320,240)
 --front_space = love.graphics.newQuad(0,224,300,94,512,512)
