@@ -2,11 +2,12 @@ echo off
 
 goto(){
 # Linux code here
-# TODO: from where did i get this?
-# TODO: for both: version file with version="0.0.1" etc... maybe per build +1 etc
+# https://nastytester.com/posts/script-that-works-in-windows-and-linux.html
 uname -o
 echo cleaning build dir
 rm -f -r build/*
+echo reading version
+source version.cmd
 echo zipping to lutro
 zip -r build/spacetrucks_$(openssl rand -hex 2).lutro conf.lua main.lua intro.lua menu.lua space.lua splash.lua mission01.lua gfx sfx
 }
@@ -17,12 +18,12 @@ exit
 :(){
 rem Windows script here
 echo %OS%
-
+CALL version.cmd
 cd build
 RD . /S /Q
 cd ..
 echo cleaning build dir
-7z a -r build/spacetrucks.zip conf.lua main.lua intro.lua menu.lua space.lua splash.lua mission01.lua gfx sfx
-copy build\spacetrucks.zip build\spacetrucks.lutro
+7z a -r build/spacetrucks-%__version__%.zip conf.lua main.lua intro.lua menu.lua space.lua splash.lua mission01.lua gfx sfx
+copy build\spacetrucks-%__version__%.zip build\spacetrucks-%__version__%.lutro
 echo zipping to lutro
 goto :eof

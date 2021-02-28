@@ -1,6 +1,3 @@
-function updateMenu(dt)
-  --updateSpace(dt)
-end
 
 function drawMenu()
   if submenu == 0 then

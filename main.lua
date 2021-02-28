@@ -38,17 +38,14 @@ function love.load()
 
   loadSavegames()
 
-	--TODO add gothic and symbol font
-	-- - https://www.dafont.com/de/pixel-icons-compilation.font?text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&fpp=200&sort=date&l[]=10&l[]=1&back=bitmap
-  -- - https://www.dafont.com/de/owrekynge.font?text=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%24%A2%80%A3%A5-%2A%2F%3D%25%27%23%40%26_%28%29%2C.%3B%3A%3F%21%7C%7B%7D%3C%3E%5B%5D%A7%5E%7E&fpp=200&sort=date&l[]=10&l[]=1&back=bitmap
-
+	--TODO add gothic font
+	-- - https://www.dafont.com/de/owrekynge.font?text=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%24%A2%80%A3%A5-%2A%2F%3D%25%27%23%40%26_%28%29%2C.%3B%3A%3F%21%7C%7B%7D%3C%3E%5B%5D%A7%5E%7E&fpp=200&sort=date&l[]=10&l[]=1&back=bitmap
+	--FIXME black background in font
 	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789$-*/=%'#@&_(),.;:?!|{}<>[]^~")
 	love.graphics.setFont(imgfont)
 
 	iconfont = love.graphics.newImageFont("gfx/iconfont.png"," abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
 
-	--TODO version file for bash build naming
-	--TODO dist folder with incremental builds
   loadAudio()
 
 	loadIntro()
@@ -70,7 +67,8 @@ end
 
 
 function love.draw()
-	--NOTE MAYBE BITONALIZE EVERYTHIN (only 2 colors: b/w no grey) with a pallette: https://lospec.com/palette-list/1bit-monitor-glow
+	--NOTE MAYBE BITONALIZE EVERYTHING (only 2 colors: b/w no grey) with a pallette: https://lospec.com/palette-list/1bit-monitor-glow
+	--REVIEW its pretty hard to create a bitonal game...
 	love.graphics.clear()
 	love.graphics.scale(SCALE,SCALE)
   if gamestate == 0 then
@@ -185,8 +183,6 @@ function loadSavegames()
 end
 
 function loadAudio()
-	--TODO blip & talking blip baba
-
   au_intro = love.audio.newSource("sfx/intro.ogg","stream")
   au_intro:setVolume(0.6)
 

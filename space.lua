@@ -6,8 +6,6 @@ psys_num = 600 --The max number of particles at the same time.
 psys_speed = 30
 psys_time_alive = 20
 
---TODO USE DIFFERENT SPRITES FOR DIFFERENT STARS AND GALAXIES, SAVE IN PARTICLE 
-
 particles = {}
 
 psys_center_x = psys_x + (psys_width / 2)
