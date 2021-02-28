@@ -38,8 +38,9 @@ function love.load()
 
   loadSavegames()
 
-	--TODO ADD Special Characters, uppercase (different font, 9px)
-	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789.!'-:*")
+	--TODO add different font, 9px
+
+	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789$-*/=%'#@&_(),.;:?!|{}<>[]^~")
 	love.graphics.setFont(imgfont)
 
 	--TODO version file for bash build naming
@@ -77,6 +78,7 @@ function love.draw()
 		--dev splash
   end
   love.graphics.printf("dl:" .. dialog_line_no .. " gs:" .. gamestate .. " sm:".. submenu,0,0,WIDTH,"right")
+
 end
 
 function love.update(dt)
@@ -103,7 +105,8 @@ function love.update(dt)
       auBGM:stop()
     end
 		updateMission01(dt)
-    -- TODO Dialog mission 1
+    -- TODO mock tutorial driving mission 1
+		-- TODO driving mission 1
 	else
     --body
 	end
@@ -188,4 +191,15 @@ function loadAudio()
     auBGM:setLooping(true)
     auBGM:setVolume(au_level)
   end
+end
+
+function draw_debug_fonts()
+	local str01 = " aabbccddeeffgghhiijjkkllmmnnooppqrstuvwxyz"
+	local str02 = "0123456789"
+	local str03 = "$-*/=%'#@&_()"
+	local str04 = ",.;:?!|{}<>[]^~"
+	love.graphics.printf(str01, 0, 20, WIDTH, "left")
+	love.graphics.printf(str02, 0, 30, WIDTH, "left")
+	love.graphics.printf(str03, 0, 40, WIDTH, "left")
+	love.graphics.printf(str04, 0, 50, WIDTH, "left")
 end

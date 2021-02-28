@@ -27,7 +27,7 @@ function loadMission01()
                    }
 
   scene_chloey_01 = { {img_bg_dialog, quad_bg_dialog, 0, 0},
-                      {img_mechanic_portrait, quad_mechanic_portrait, 320-150, 240-80-150},
+                      {img_mechanic_portrait, quad_mechanic_portrait, 320-150, 240-60-150},
                       {img_dialog, quad_dialog, 0, 240-80}
                     }
 
@@ -60,9 +60,9 @@ function drawMission01()
   for k, v in pairs(sc) do
     love.graphics.draw(v[1], v[2], v[3], v[4])
   end
-
+  --TODO CHANGE TO : chloe@opportunity:~$ LINE
   --print("loc:"..loc.." chrc:"..chrc.." l_str:"..l_str)
-  love.graphics.printf("location:"..loc,20,150,WIDTH,"left")
+  love.graphics.printf("location:"..loc,0,0,WIDTH,"left")
 
   love.graphics.printf(chrc,0,167,WIDTH,"center")
 
