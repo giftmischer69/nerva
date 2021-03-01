@@ -59,7 +59,7 @@ function loadMission01()
 end
 
 function updateMission01(dt)
-
+  --body
 end
 
 function drawMission01()
@@ -81,6 +81,6 @@ function drawMission01()
   if dialog_char_no % 2 == 0 and dialog_char_no < string.len(l_str) then
     print("blip: " .. dialog_char_no)
     print(dialog_char_no .. " < " .. string.len(l_str))
-    au_chloe_blip:play()
+    --au_chloe_blip:play()
   end
 end

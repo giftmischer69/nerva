@@ -6,10 +6,8 @@ goto(){
 uname -o
 echo cleaning build dir
 rm -f -r build/*
-echo reading version
-source version.cmd
-echo zipping to lutro
-zip -r build/spacetrucks_$(openssl rand -hex 2).lutro conf.lua main.lua intro.lua menu.lua space.lua splash.lua mission01.lua gfx sfx
+echo reading version & zipping to lutro
+zip -r build/spacetrucks-$(./version.cmd).lutro conf.lua main.lua intro.lua menu.lua space.lua splash.lua mission01.lua gfx sfx
 }
 
 goto $@

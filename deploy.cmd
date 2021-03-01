@@ -1,9 +1,9 @@
 
+
 goto(){
 # Linux code here
 # https://nastytester.com/posts/script-that-works-in-windows-and-linux.html
-# https://semver.org/
-echo "0.0.8"
+sshpass -p 'recalboxroot' -v scp build/spacetrucks-$(./version.cmd).lutro root@192.168.178.30:/recalbox/share/roms/lutro/
 }
 
 goto $@
@@ -11,5 +11,5 @@ exit
 
 :(){
 rem Windows script here
-SET __version__="0.0.8"
+echo TODO
 goto :eof
