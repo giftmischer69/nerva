@@ -35,4 +35,5 @@ function drawIntro()
 
   love.graphics.printf("gmxr",200,150,0,"center")
   love.graphics.printf("ent.",200,160,0,"center")
+
 end

@@ -43,7 +43,6 @@ function love.load()
 
 	--TODO add gothic font
 	-- - https://www.dafont.com/de/owrekynge.font?text=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%24%A2%80%A3%A5-%2A%2F%3D%25%27%23%40%26_%28%29%2C.%3B%3A%3F%21%7C%7B%7D%3C%3E%5B%5D%A7%5E%7E&fpp=200&sort=date&l[]=10&l[]=1&back=bitmap
-	--FIXME black background in font
 	imgfont = love.graphics.newImageFont("gfx/imgfont.png"," abcdefghijklmnopqrstuvwxyz0123456789$-*/=%'#@&_(),.;:?!|{}<>[]^~")
 	love.graphics.setFont(imgfont)
 
@@ -83,7 +82,7 @@ function love.draw()
 		drawMission01()
   end
   love.graphics.printf("fps:" .. math.floor(1 / dbg_dt) .. " dl:" .. dialog_line_no .. " gs:" .. gamestate .. " sm:".. submenu,0,0,WIDTH,"right")
-
+	--draw_debug_fonts()
 	--love.graphics.setFont(iconfont)
 	--love.graphics.printf(" abcdefghijklmnopqrstuvwxyz",0,0,WIDTH,"left")
 	--love.graphics.setFont(imgfont)
@@ -92,11 +91,10 @@ end
 function love.update(dt)
 	dbg_dt = dt
   if gamestate == 0 then
-
     updateIntro()
     updateSpace(dt)
     if dev_splash_counter > splash_duration then
-			gamestate = gamestate + 1
+			gamestate = 1
 		end
 	elseif gamestate == 1 then
     if au_level < 0.6 then
@@ -154,6 +152,10 @@ function love.gamepadpressed(i, key)
 				print("update dlln")
 				dialog_line_no = dialog_line_no + 1
 				dialog_char_no = 1
+			else
+				--TODO driving
+				gamestate == 3
+				print("not update dlln")
 			end
 		end
 
