@@ -154,7 +154,7 @@ function love.gamepadpressed(i, key)
 				dialog_char_no = 1
 			else
 				--TODO driving
-				gamestate == 3
+				gamestate = 3
 				print("not update dlln")
 			end
 		end
