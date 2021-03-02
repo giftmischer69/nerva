@@ -1,4 +1,4 @@
-# spacetrucks
+# nerva
 
 this project is a proof of concept demo for a "truck simulator meets a visual
 novel somewhere in a cyberpunk dystopia in space" developed with
@@ -6,14 +6,20 @@ novel somewhere in a cyberpunk dystopia in space" developed with
 for the [raspberry pi zero w with the retroflag gpi case](http://retroflag.com/GPi-CASE.html)
 running [recalbox](https://www.recalbox.com/de/).
 
-i am happy with how this demo turned out, and i have moved on to other projects.
-
 if you want to play this game on pc, download the .lutro file from the github release page of
-this repository, and run it with [retroarch]https://www.retroarch.com
+this repository, and run it with [retroarch](https://www.retroarch.com).
+
+screenshot:
+
+![screenshot](./screenshot.png)
+
+i am happy with how this demo turned out, and i have moved on to other projects.
+if you like this project and want to work on it, i would be happy to return to
+this project and to develop a story-driven space game with you.
 
 ## vision
 
-spacetrucks will be a story and text based game, in which you play as a truck
+nerva ~will~ could be a story and text based game, in which you play as a truck
 driver (m/f/d) in space, trying to avoid obstacles (asteroids), gangsters and
 the police along the way, meet fantastic people, and customize your truck engine
 and interior.
@@ -65,12 +71,6 @@ interviews/dialogues -> radio-like transmissions with fellow truckers
 - pre-render backrounds for space / planets / spaceship-states and make sprites
 - take a look at scott pilgrim vs the world sprites for inspiration -> own art style
 - parallax effect
-- https://www.google.com/search?q=space+pixel+art&sxsrf=ALeKk01eAbnsWAmPSgEHhc8O60_wTUOGew:1613870643154&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjU6JfT6PnuAhVB6aQKHbbVDC0Q_AUoAXoECBEQAw&biw=792&bih=739
-
-## technical realization
-developed with [libretro-lutro](https://github.com/libretro/libretro-lutro)
-for the [raspberry pi zero w with the retroflag gpi case](http://retroflag.com/GPi-CASE.html)
-running [recalbox](https://www.recalbox.com/de/)
 
 ## lore ideas
 
