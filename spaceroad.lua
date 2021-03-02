@@ -2,7 +2,7 @@ psys_x = 0
 psys_y = 0
 psys_width = 320
 psys_height = 240
-psys_num = 600 --The max number of particles at the same time.
+--psys_num = 600 --The max number of particles at the same time.
 psys_speed = 30
 psys_time_alive = 20
 
@@ -11,18 +11,19 @@ particles = {}
 psys_center_x = psys_x + (psys_width / 2)
 psys_center_y = psys_y + (psys_height / 2)
 
-psys_fade_in_sec = 2
+psys_fade_in_sec = 1
 
-psys_particle_color_val = 240--155
+psys_particle_color_val = 240--155 --NOTE to pink
 
 back_space = love.graphics.newQuad(0,0,320,240,512,512)
 
-space_ship_hud = love.graphics.newQuad(0,0,320,240,320,240)
---front_space = love.graphics.newQuad(0,224,300,94,512,512)
---track_space = love.graphics.newQuad(0,48,121,5,128,128)
-
 offset_x = 100
 steer_x = -0.1
+
+--one particle steering from center to left bottom
+--calculate other values from that
+--draw road with https://love2d.org/wiki/love.graphics.polygon
+-- 4 values on the diagonals 2 l 2 r "chasing each other"
 
 function getTimeStamp()
   return love.timer.getTime()
@@ -34,7 +35,7 @@ function getRandomFloatMinusOneToOne()
   return temp_num
 end
 
-function loadSpace()
+function loadSpaceRoad()
   imgSpace = love.graphics.newImage("gfx/space_backdrop.png")
 	imgSpace:setFilter("nearest","nearest")
 
@@ -48,7 +49,7 @@ function loadSpace()
 end
 
 
-function updateSpace(dt)
+function updateSpaceRoad(dt)
   --offset_x = offset_x + steer_x
   --if offset_x < -100 or offset_x > 100 then
     --steer_x = -steer_x
@@ -63,41 +64,26 @@ function updateSpace(dt)
       or value[2] < psys_y
       or value[2] > psys_height
     then
+
       --table.remove(particles, index)
       -- a particle is a table {x position, y position, x speed, y speed, created_time}
       value[1] = psys_center_x -- offset_x
       value[2] = psys_center_y
-      value[3] = getRandomFloatMinusOneToOne() * psys_speed
-      value[4] = getRandomFloatMinusOneToOne() * psys_speed
+      value[3] = 0
+      value[4] = ((getRandomFloatMinusOneToOne() / 2) + 0.5) * psys_speed
       value[5] = getTimeStamp()
     end
 
-    value[1] = (value[1] + (value[3] * dt)) --+ (offset_x / 200)-- % psys_width
+    --value[1] = (value[1] + (value[3] * dt)) --+ (offset_x / 200)-- % psys_width
     value[2] = (value[2] + (value[4] * dt)) -- % psys_height
   end
 end
 
-function drawSpace()
-  love.graphics.draw(imgSpace, back_space, 0,0)
-
-  for index, value in ipairs(particles) do
-    diff = getTimeStamp() - value[5]
-
-    if diff < psys_fade_in_sec then
-      col = ((diff / psys_fade_in_sec) * psys_particle_color_val) -- + 23
-      love.graphics.setColor(col - 1, col, col)
-      love.graphics.circle("fill", value[1],value[2],1)
-    else
-      love.graphics.setColor(psys_particle_color_val, psys_particle_color_val, psys_particle_color_val)
-      love.graphics.circle("fill", value[1],value[2],1)
-    end
-    --love.graphics.setColor(255,0,0)
-    --love.graphics.circle("fill", psys_center_x - offset_x, psys_center_y, 1)
-
-    --love.graphics.draw(imgShipHud, space_ship_hud, 0, 0)
-
-    --love.graphics.point(value[1],value[2])
-    --p_quad = love.graphics.newQuad(value[1],value[2],9,9,9,9)
-    --love.graphics.draw(imgStar,p_quad,value[1],value[2])
-  end
+function drawSpaceRoad()
+  -- defining a table with the coordinates
+  -- this table could be built incrementally too
+  local vertices = {100, 100, 200, 100, 150, 200}
+  love.graphics.setColor(255, 0, 255)
+  -- passing the table to the function as a second argument
+  love.graphics.polygon('fill', vertices)
 end

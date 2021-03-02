@@ -5,6 +5,10 @@ require("menu")
 require("space")
 require("splash")
 require("mission01")
+require("driving")
+require("spaceroad")
+
+maf = require 'maf'
 
 WIDTH = 320
 HEIGHT = 240
@@ -12,13 +16,13 @@ SCALE = 1
 
 pause = false
 mute = false
-gamestate = 0
+gamestate = 3--0
 selection = 0
 submenu = 0
 
 use_music = true
 
-splash_duration = 300
+splash_duration = 3--00
 
 save_names = nil
 
@@ -55,10 +59,25 @@ function love.load()
   loadSplash()
 	loadMission01()
 
+	loadDriving()
+
+	debugMaf()
+
   --au_intro:play()
 
 	updateScale()
 	restart()
+end
+
+function debugMaf()
+	local a = maf.vector(1, 2, 3)
+	local b = maf.vector(-4, 2, 6)
+
+	local c = a + b
+	local d = maf.rotation.between(a, b)
+
+	print(c:unpack())
+	print(d:getAngleAxis())
 end
 
 
@@ -80,7 +99,9 @@ function love.draw()
     drawMenu()
   elseif gamestate == 2 then
 		drawMission01()
-  end
+	elseif gamestate == 3 then
+		drawDriving()
+	end
   love.graphics.printf("fps:" .. math.floor(1 / dbg_dt) .. " dl:" .. dialog_line_no .. " gs:" .. gamestate .. " sm:".. submenu,0,0,WIDTH,"right")
 	--draw_debug_fonts()
 	--love.graphics.setFont(iconfont)
@@ -114,6 +135,9 @@ function love.update(dt)
 		updateMission01(dt)
     -- TODO mock tutorial driving mission 1
 		-- TODO driving mission 1
+	elseif gamestate == 3 then
+		--TODO music
+		updateDriving(dt)
 	else
     --body
 	end
@@ -159,7 +183,11 @@ function love.gamepadpressed(i, key)
 			end
 		end
 
-  end
+  elseif gamestate == 2 then
+		--TODO driving control
+	end
+
+
 end
 
 function love.gamepadreleased(i, k)

@@ -9,6 +9,9 @@ https://www.google.com/search?q=spaceship%20cockpit&tbm=isch&hl=de&tbs=ic:trans&
 echo usage: encode.cmd input.mp3 output.ogg
 sox %1 -r 44100 -c 1 %2
 
+https://github.com/bjornbytes/maf
+
+
 
 ## vision
 
