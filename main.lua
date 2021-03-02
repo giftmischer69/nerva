@@ -42,8 +42,7 @@ function love.load()
   print("LOAD")
 	math.randomseed(os.time())
 
-  --loadSavegames() --FIXME this doesnt work on the rpi
-	save_names = {"xxx", "xxx", "xxx"}
+  save_names = {"xxx", "xxx", "xxx"}
 
 	--NOTE add gothic font
 	-- - https://www.dafont.com/de/owrekynge.font?text=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%24%A2%80%A3%A5-%2A%2F%3D%25%27%23%40%26_%28%29%2C.%3B%3A%3F%21%7C%7B%7D%3C%3E%5B%5D%A7%5E%7E&fpp=200&sort=date&l[]=10&l[]=1&back=bitmap
@@ -106,10 +105,6 @@ function love.draw()
 	end
 
   love.graphics.printf("s_x:"..steer_x.." fps:" .. math.floor(1 / dbg_dt) .. " dl:" .. dialog_line_no .. " gs:" .. gamestate .. " sm:".. submenu,0,0,WIDTH,"right")
-	--draw_debug_fonts()
-	--love.graphics.setFont(iconfont)
-	--love.graphics.printf(" abcdefghijklmnopqrstuvwxyz",0,0,WIDTH,"left")
-	--love.graphics.setFont(imgfont)
 end
 
 function drawDemoGameOver()
@@ -130,6 +125,7 @@ function love.update(dt)
     if dev_splash_counter > splash_duration then
 			gamestate = 1
 		end
+
 	elseif gamestate == 1 then
     if au_level < 0.6 then
       au_level = au_level + 0.001 --slowly fade in if cut
@@ -140,13 +136,13 @@ function love.update(dt)
     end
     updateSpace(dt)
 
-		--dev splash
 	elseif gamestate == 2 then
     if auBGM:isPlaying() then
       auBGM:stop()
 			au_level = 0
     end
 		updateMission01(dt)
+
 	elseif gamestate == 3 then
 		if not auBGM:isPlaying() then
 			auBGM:play()
@@ -175,8 +171,6 @@ function updateScale()
 end
 
 function love.gamepadpressed(i, key)
-  --print(selection)
-  --print(key)
   if gamestate == 0 then
     return
   elseif gamestate == 1 then
@@ -196,17 +190,13 @@ function love.gamepadpressed(i, key)
     return
   elseif gamestate == 2 then
 		if key == "a" or key == "start" then
-			--print("dln:"..dialog_line_no.." dll:"..table.getn(dialog_lines))
 			if dialog_line_no ~= table.getn(dialog_lines) then
-				--print("update dlln")
 				dialog_line_no = dialog_line_no + 1
 				dialog_char_no = 1
 			else
 				gamestate = 3
-				--print("not update dlln")
 			end
 		end
-
   elseif gamestate == 3 then
 		if key == "left" then
 			steer_x = steer_x - 0.01
@@ -214,35 +204,12 @@ function love.gamepadpressed(i, key)
 			steer_x = steer_x + 0.01
 		end
 	end
-
-
 end
 
 function love.gamepadreleased(i, k)
 	-- body
 end
 
-function loadSavegames()
-  local filename = "sg.txt"
-	local fh = io.open(filename, "r")
-  if fh then
-    --> File Found
-  else
-    --> File not found
-    local s = "{\"xxx\", \"xxx\", \"xxx\"}"
-    print("saving " .. s)
-    local f = io.open(filename, "w")
-    f:write(s)
-    f:close()
-  end
-
-  local f = io.open(filename, "r")
-  local t = f:read("*all")
-  t = (loadstring or load)("return "..t)()
-  save_names = t
-	print(t)
-  f:close()
-end
 
 function loadAudio()
   au_intro = love.audio.newSource("sfx/intro.ogg","stream")
@@ -263,15 +230,4 @@ function loadAudio()
     auBGM:setLooping(true)
     auBGM:setVolume(au_level)
   end
-end
-
-function draw_debug_fonts()
-	local str01 = " aabbccddeeffgghhiijjkkllmmnnooppqrstuvwxyz"
-	local str02 = "0123456789"
-	local str03 = "$-*/=%'#@&_()"
-	local str04 = ",.;:?!|{}<>[]^~"
-	love.graphics.printf(str01, 0, 20, WIDTH, "left")
-	love.graphics.printf(str02, 0, 30, WIDTH, "left")
-	love.graphics.printf(str03, 0, 40, WIDTH, "left")
-	love.graphics.printf(str04, 0, 50, WIDTH, "left")
 end

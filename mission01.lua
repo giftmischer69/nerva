@@ -87,7 +87,6 @@ function drawMission01()
     love.graphics.draw(v[1], v[2], v[3], v[4])
   end
 
-  --love.graphics.printf(chrc .. "@" .. loc, 0, 160, WIDTH, "center")
   if dialog_char_no < string.len(l_str) then
     dialog_char_no = dialog_char_no + 1
   end
@@ -95,8 +94,6 @@ function drawMission01()
   love.graphics.printf(l_str:sub(1,dialog_char_no), 40, 181, WIDTH - 85, "left")
 
   if dialog_char_no % 2 == 0 and dialog_char_no < string.len(l_str) then
-    --print("blip: " .. dialog_char_no)
-    --print(dialog_char_no .. " < " .. string.len(l_str))
     au_chloe_blip:play()
   end
 end
