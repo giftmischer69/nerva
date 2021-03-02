@@ -2,7 +2,7 @@ psys_x = 0
 psys_y = 0
 psys_width = 320
 psys_height = 240
-psys_num = 600 --The max number of particles at the same time.
+psys_num = 200 --The max number of particles at the same time.
 psys_speed = 30
 psys_time_alive = 20
 

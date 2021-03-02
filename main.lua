@@ -31,8 +31,6 @@ dialog_char_no = 1
 
 dbg_dt = 0
 
---TODO make a script img -> monochrome + monitor glow with transparency
-
 function love.conf(t)
 	t.width = WIDTH
 	t.height = HEIGHT
@@ -62,7 +60,9 @@ function love.load()
 
 	debugMaf()
 
-  au_intro:play()
+	if not mute then
+  	--love.audio.play(au_intro)
+	end
 
 	updateScale()
 	restart()
@@ -131,8 +131,8 @@ function love.update(dt)
       au_level = au_level + 0.001 --slowly fade in if cut
     end
     auBGM:setVolume(au_level)
-    if not auBGM:isPlaying() then
-      auBGM:play()
+    if not auBGM:isPlaying() and not mute then
+      --love.audio.play(auBGM)
     end
     updateSpace(dt)
 
@@ -144,8 +144,8 @@ function love.update(dt)
 		updateMission01(dt)
 
 	elseif gamestate == 3 then
-		if not auBGM:isPlaying() then
-			auBGM:play()
+		if not auBGM:isPlaying() and not mute then
+			--love.audio.play(auBGM)
 		end
 		if au_level < 0.6 then
       au_level = au_level + 0.001 --slowly fade in if cut
@@ -179,7 +179,9 @@ function love.gamepadpressed(i, key)
     elseif key == 'down' then
       selection = selection + 1
     elseif key == 'start' then
-			love.audio.play(auSelect)
+			if not mute then
+				--love.audio.play(auSelect)
+			end
 			if submenu == 0 then
       	submenu = 1
 			elseif submenu == 1 then

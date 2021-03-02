@@ -67,7 +67,9 @@ function updateDriving(dt)
       drv_pos = drv_pos + (drv_dir * drv_speed)
       psys_speed = 30 * drv_speed / 0.0001
       if not au_engine:isPlaying() then
-        au_engine:play()
+        if not mute then
+          --love.audio.play(au_engine)
+        end
       end
     else
       if au_engine:isPlaying() then
@@ -75,7 +77,9 @@ function updateDriving(dt)
       end
 
       if not au_explosion:isPlaying() then
-        au_explosion:play()
+        if not mute then
+          --love.audio.play(au_explosion)
+        end
       end
       drv_finished = true
     end

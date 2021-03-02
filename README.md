@@ -1,17 +1,15 @@
 # spacetrucks
 
-the goal of this project is to create a "truck simulator meets a visual novel somewhere in a cyberpunk dystopia in space" developed with [libretro-lutro](https://github.com/libretro/libretro-lutro)
+this project is a proof of concept demo for a "truck simulator meets a visual
+novel somewhere in a cyberpunk dystopia in space" developed with
+[libretro-lutro](https://github.com/libretro/libretro-lutro)
 for the [raspberry pi zero w with the retroflag gpi case](http://retroflag.com/GPi-CASE.html)
-running [recalbox](https://www.recalbox.com/de/)
+running [recalbox](https://www.recalbox.com/de/).
 
-https://www.google.com/search?q=spaceship%20cockpit&tbm=isch&hl=de&tbs=ic:trans&sa=X&ved=0CAEQpwVqFwoTCOCQhZSthu8CFQAAAAAdAAAAABAC&biw=1577&bih=788#imgrc=wrtl8XsMQ-SeoM
+i am happy with how this demo turned out, and i have moved on to other projects.
 
-echo usage: encode.cmd input.mp3 output.ogg
-sox %1 -r 44100 -c 1 %2
-
-https://github.com/bjornbytes/maf
-
-
+if you want to play this game on pc, download the .lutro file from the github release page of
+this repository, and run it with [retroarch]https://www.retroarch.com
 
 ## vision
 

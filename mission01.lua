@@ -93,7 +93,7 @@ function drawMission01()
 
   love.graphics.printf(l_str:sub(1,dialog_char_no), 40, 181, WIDTH - 85, "left")
 
-  if dialog_char_no % 2 == 0 and dialog_char_no < string.len(l_str) then
-    au_chloe_blip:play()
+  if dialog_char_no % 2 == 0 and dialog_char_no < string.len(l_str) and not mute then
+    --love.audio.play(au_chloe_blip)
   end
 end

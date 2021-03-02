@@ -11,5 +11,5 @@ exit
 
 :(){
 rem Windows script here
-echo TODO deploy from win to pi
+echo NOTE
 goto :eof
