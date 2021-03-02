@@ -33,7 +33,7 @@ function loadMission01()
                       {img_dialog, quad_dialog, 0, 240-80}
                     }
 
-  --TODO let the player choose a character sprite, display when character has lines
+  --NOTE let the player choose a character sprite, display when character has lines
   -- do this when persistent storage works on the rpi
   scene_player_01 = { {img_bg_dialog, quad_bg_dialog, 0, 0},
                       {img_dialog, quad_dialog, 0, 240-80}
@@ -45,15 +45,15 @@ function loadMission01()
                       {img_dialog, quad_dialog, 0, 240-80}
                     }
 
-  --TODO player opportunity scene
-  --TODO finish dialogue
   scene_opportunity_01 = { {img_bg_dialog, quad_bg_dialog, 0, 0},
                                         {img_driving_hud, quad_driving_hud, 0, 0},
                                         {img_mechanic_portrait, quad_mechanic_portrait, 320-150, 240-60-150},
                                         {img_dialog, quad_dialog, 0, 240-80}
                                       }
-
-
+  scene_opportunity_02 = { {img_bg_dialog, quad_bg_dialog, 0, 0},
+                           {img_driving_hud, quad_driving_hud, 0, 0},
+                           {img_dialog, quad_dialog, 0, 240-80}
+                         }
   --a line contains: location     , character, string_line, scene
   dialog_lines = {  {"xxx"        , "xxx"    , "...hello?", scene_black_01},
                     {"gstat_base_neo_earth", "chloe"  , "hey, wake\n\nup! your last job under my supervision is\n\ncoming up, and you oversleep! ...", scene_chloey_01},
@@ -64,11 +64,11 @@ function loadMission01()
                     {""        , ""    , "", scene_black_01},
                     {"opportunity", "chloe"  , "we've got a pretty\n\nsimple job on our hands today.\n\nwe need to deliver 51 metric tons", scene_opportunity_01},
                     {"opportunity", "chloe"  , "of foodstuffs to a\n\nnearby solar system, and we'll make\n\n300 credits if everything goes well...", scene_opportunity_01},
-                    {"opportunity", "player"  , "of foodstuffs to a\n\nnearby solar system, and we'll make\n\n300 credits if everything goes well...", scene_opportunity_01}
-                    --{}
-
-
-                 }
+                    {"opportunity", "player"  , "sounds great!\n\nwhen do we start?", scene_opportunity_02},
+                    {"opportunity", "chloe",   "right now!\n\nand since this is the last\n\nofficially required trip", scene_opportunity_01},
+                    {"opportunity", "chloe",   "for your ocl,\n\nit may also be our last trip together...\n\nyou're driving!", scene_opportunity_01},
+                    {""        , ""    , "", scene_black_01}
+                  }
 
 end
 
@@ -97,6 +97,6 @@ function drawMission01()
   if dialog_char_no % 2 == 0 and dialog_char_no < string.len(l_str) then
     --print("blip: " .. dialog_char_no)
     --print(dialog_char_no .. " < " .. string.len(l_str))
-    --au_chloe_blip:play()
+    au_chloe_blip:play()
   end
 end

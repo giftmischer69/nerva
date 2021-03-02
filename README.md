@@ -54,7 +54,7 @@ the gameplay takes form in several different states:
 
 - state: customizing
   - the player customizes the truck (and interior) in a need-for-speed like
-  fashion. TODO determine customizable features of truck
+  fashion. NOTE determine customizable features of truck
 
 - featue: mini-map
   - sprite based planet to planet view with edges
